@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
             System.DateTime currentTime = new System.DateTime();
             currentTime = System.DateTime.Now;
             string strY = currentTime.ToString("f");
-            FileStream fs = new FileStream(@"C:\Users\tyh\Desktop\history.txt", FileMode.Append, FileAccess.Write);
+            FileStream fs = new FileStream(@"..\history.txt", FileMode.Append, FileAccess.Write);
             
             StreamWriter sw = new StreamWriter(fs);
             switch (result)
@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
 
         public string history()
         {
-            FileStream ks = new FileStream(@"C:\Users\tyh\Desktop\history.txt", FileMode.Open, FileAccess.Read);
+            FileStream ks = new FileStream(@"..\history.txt", FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(ks);
             string history = sr.ReadToEnd();
             sr.Close();
