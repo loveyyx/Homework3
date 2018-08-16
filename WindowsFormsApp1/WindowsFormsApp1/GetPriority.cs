@@ -36,17 +36,17 @@ namespace AIjudge
                 if (j == 2 && panel[i, j - 1] == -1 && panel[i, j - 2] == -1)
                     return 5;
                 //斜三连
-                if (i == 0 && j == 0 && panle[i + 1, j + 1] == -1 && panel[i + 2, j + 2] == -1)
+                if (i == 0 && j == 0 && panel[i + 1, j + 1] == -1 && panel[i + 2, j + 2] == -1)
                     return 5;
-                if (i == 1 && j == 1 && panle[i + 1, j + 1] == -1 && panel[i - 1, j - 1] == -1)
+                if (i == 1 && j == 1 && panel[i + 1, j + 1] == -1 && panel[i - 1, j - 1] == -1)
                     return 5;
-                if (i == 2 && j == 2 && panle[i - 1, j - 1] == -1 && panel[i - 2, j - 2] == -1)
+                if (i == 2 && j == 2 && panel[i - 1, j - 1] == -1 && panel[i - 2, j - 2] == -1)
                     return 5;
-                if (i == 0 && j == 2 && panle[i + 1, j - 1] == -1 && panel[i + 2, j - 2] == -1)
+                if (i == 0 && j == 2 && panel[i + 1, j - 1] == -1 && panel[i + 2, j - 2] == -1)
                     return 5;
-                if (i == 1 && j == 1 && panle[i - 1, j + 1] == -1 && panel[i + 1, j - 1] == -1)
+                if (i == 1 && j == 1 && panel[i - 1, j + 1] == -1 && panel[i + 1, j - 1] == -1)
                     return 5;
-                if (i == 2 && j == 0 && panle[i - 1, j + 1] == -1 && panel[i - 2, j + 2] == -1)
+                if (i == 2 && j == 0 && panel[i - 1, j + 1] == -1 && panel[i - 2, j + 2] == -1)
                     return 5;
                 //对手二连
                 if (i == 2 && panel[i - 1, j] == 1 && panel[i - 2, j] == 1)
@@ -61,17 +61,17 @@ namespace AIjudge
                     return 4;
                 if (j == 2 && panel[i, j - 1] == 1 && panel[i, j - 2] == 1)
                     return 4;
-                if (i == 0 && j == 0 && panle[i + 1, j + 1] == 1 && panel[i + 2, j + 2] == 1)
+                if (i == 0 && j == 0 && panel[i + 1, j + 1] == 1 && panel[i + 2, j + 2] == 1)
                     return 4;
-                if (i == 1 && j == 1 && panle[i + 1, j + 1] == 1 && panel[i - 1, j - 1] == 1)
+                if (i == 1 && j == 1 && panel[i + 1, j + 1] == 1 && panel[i - 1, j - 1] == 1)
                     return 4;
-                if (i == 2 && j == 2 && panle[i - 1, j - 1] == 1 && panel[i - 2, j - 2] == 1)
+                if (i == 2 && j == 2 && panel[i - 1, j - 1] == 1 && panel[i - 2, j - 2] == 1)
                     return 4;
-                if (i == 0 && j == 2 && panle[i + 1, j - 1] == 1 && panel[i + 2, j - 2] == 1)
+                if (i == 0 && j == 2 && panel[i + 1, j - 1] == 1 && panel[i + 2, j - 2] == 1)
                     return 4;
-                if (i == 1 && j == 1 && panle[i - 1, j + 1] == 1 && panel[i + 1, j - 1] == 1)
+                if (i == 1 && j == 1 && panel[i - 1, j + 1] == 1 && panel[i + 1, j - 1] == 1)
                     return 4;
-                if (i == 2 && j == 0 && panle[i - 1, j + 1] == 1 && panel[i - 2, j + 2] == 1)
+                if (i == 2 && j == 0 && panel[i - 1, j + 1] == 1 && panel[i - 2, j + 2] == 1)
                     return 4;
                 if (i == 1 && j == 1)
                     return 3;//占中，第三优先级
@@ -80,23 +80,24 @@ namespace AIjudge
             }
         }
 
-        //为每个位置设置下棋优先级
-        public int[,] SetPriority(int[,] priority, int[,] panel)
-        {
-            priority = new int[3, 3] { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
-            for (int i = 0; i < 3; i++)
-                for (int j = 0; j < 3; j++)
-                    priority[i, j] = GetPriority(i, j, panel);
-        }
+
 
         //找到最高优先级位置
-        public int[] FindNext(int[,] priority)
+        public int[] FindNext(int[,] panel)
         {
+            //为每个位置设置下棋优先级
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    priority[i, j] = GetPriority(i, j, panel);
+                }
+            }
             int[] position = new int[2] { 0, 0 };
-            int MaxPriority = 0;
+            int MaxPriority = priority[0,0];
             for (int i = 1; i < 9; i++)
             {
-                if (priority[i % 3, i / 3] >= priority[(i - 1) % 3, (i - 1) / 3])
+                if (priority[i % 3, i / 3] >=MaxPriority)
                 {
                     MaxPriority = priority[i % 3, i / 3];
                 }
