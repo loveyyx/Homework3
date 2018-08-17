@@ -10,7 +10,10 @@ namespace WindowsFormsApp1
 {
     class Draw
     {
-        //画圆圈
+        /// <summary>
+        /// 画圆圈
+        /// </summary>
+        /// <param name="panel"></param>
         public void DrawCircle(Panel panel)
         {
             Pen P = new Pen(Color.Ivory, 6);
@@ -18,7 +21,10 @@ namespace WindowsFormsApp1
             g.DrawEllipse(P, 10, 10, 55, 55);
         }
 
-        //画叉
+        /// <summary>
+        /// 画叉
+        /// </summary>
+        /// <param name="panel"></param>
         public void DrawCross(Panel panel)
         {
             Pen P = new Pen(Color.Black, 6);

@@ -9,6 +9,10 @@ namespace WindowsFormsApp1
 {
     class Save
     {
+        /// <summary>
+        /// 存储游戏记录
+        /// </summary>
+        /// <param name="result"></param>
         public void SaveResult(int result)
         {
             System.DateTime currentTime = new System.DateTime();
@@ -34,7 +38,10 @@ namespace WindowsFormsApp1
             sw.Close();
         }
 
-
+        /// <summary>
+        /// 查看游戏记录
+        /// </summary>
+        /// <returns>返回字符串</returns>
         public string history()
         {
             FileStream ks = new FileStream(@"..\history.txt", FileMode.Open, FileAccess.Read);
