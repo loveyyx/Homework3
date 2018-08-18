@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class Save
+    class Record
     {
         /// <summary>
         /// 存储游戏记录

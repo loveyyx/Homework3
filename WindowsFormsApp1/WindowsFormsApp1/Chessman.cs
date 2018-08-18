@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    class Draw
+    class Chessman
     {
         /// <summary>
         /// 画圆圈
@@ -32,6 +32,5 @@ namespace WindowsFormsApp1
             g.DrawLine(P, 10, 10, 65, 65);
             g.DrawLine(P, 10, 65, 65, 10);
         }
-
     }
 }

@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        Save save = new Save();
+        Record save = new Record();
         public Form1()
         {
             InitializeComponent();
